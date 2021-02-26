@@ -1,0 +1,66 @@
+<form [formGroup]="scheduleCallForm" novalidate>
+    <h1 mat-dialog-title class="text-center">Please enter details.
+        <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+            <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+        </button>
+    </h1>
+    <div mat-dialog-content>
+        <div class="row form-row">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100 mt-2">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name" maxlength="50">
+                    <mat-error *ngIf="scheduleCallForm.controls['name'].errors">
+                        Name is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100 mt-2">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput placeholder="Phone Number" minlength="10" maxlength="10" formControlName="phone">
+                    <mat-error *ngIf="scheduleCallForm.controls['phone'].errors">
+                        Phone is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100 mt-2">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" type="email" formControlName="email" maxlength="50">
+                    <mat-error *ngIf="scheduleCallForm.controls['email'].errors">
+                        Email is required.
+                    </mat-error>
+                </mat-form-field>
+            </div> -->
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100 mt-2">
+                    <mat-label>Preferred date</mat-label>
+                    <input matInput [matDatepicker]="picker" placeholder="Preferred date (DD/MM/YYYY)"
+                        formControlName="date" maxlength="50">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker [touchUi]="isMobile" #picker></mat-datepicker>
+                    <mat-error *ngIf="scheduleCallForm.controls['date'].errors">
+                        Preferred date is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100 mt-2">
+                    <mat-label>Preferred time</mat-label>
+                    <mat-select formControlName="time">
+                        <mat-option value="{{item}}" *ngFor="let item of timeList">{{item}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="scheduleCallForm.controls['time'].errors">
+                        Preferred time is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="d-flex text-center mt-2 justify-content-center">
+            <button type="submit" class="btn btn-primary mat-dialog-title" (click)="submitForm()">
+                Submit
+            </button>
+        </div>
+    </div>
+</form>

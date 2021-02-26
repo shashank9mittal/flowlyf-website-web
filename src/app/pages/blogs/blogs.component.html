@@ -1,0 +1,63 @@
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4 mb-md-5" data-aos="fade-up" *ngFor="let blog of blogs">
+                    <div class="d-flex flex-column flex-lg-row no-gutters border rounded bg-white o-hidden">
+                        <a [routerLink]="['/blogs',blog._id]" class="d-block position-relative bg-gradient col-xl-5">
+                            <img class="flex-fill hover-fade-out" src="{{blog.image}}" alt="blog.1.image">
+                            <div class="divider divider-side bg-white d-none d-lg-block"></div>
+                        </a>
+                        <div class="p-4 p-md-5 col-xl-7 d-flex align-items-center">
+                            <div class="p-lg-4 p-xl-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3 mb-xl-4">
+                                    <a [routerLink]="['/blogs',blog._id]"
+                                        class="badge badge-pill badge-primary">{{blog.type}}</a>
+                                    <div class="text-small text-muted">{{blog.date | date}}</div>
+                                </div>
+                                <a href="#">
+                                    <h1>{{blog.title}}</h1>
+                                </a>
+                                <p class="lead">{{blog.shortDesc}}</p>
+                                <a [routerLink]="['/blogs',blog._id]" class="lead">{{blog.moreTitle}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="row justify-content-center mt-4">
+            <div class="col-auto">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link rounded" href="#" aria-label="Previous">
+                                <img src="assets/img/icons/interface/icon-arrow-left.svg" alt="Arrow Left"
+                                    class="icon icon-xs bg-primary" data-inject-svg>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link rounded" href="#" aria-label="Next">
+                                <img src="assets/img/icons/interface/icon-arrow-right.svg" alt="Arrow Right"
+                                    class="icon icon-xs bg-primary" data-inject-svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div> -->
+
+
+    </div>
+</section>
+
+<app-blogs-subs></app-blogs-subs>

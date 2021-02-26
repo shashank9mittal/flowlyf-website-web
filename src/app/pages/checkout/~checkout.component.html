@@ -1,0 +1,222 @@
+<section class="bg-light tab-content pt-5">
+    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+        <div class="container">
+            <div class="row mb-4 mb-md-5 align-items-start">
+                <div class="col-lg-4 order-lg-2 mb-4 mb-lg-0 sticky-lg-top pl-lg-5">
+                    <div class="alert alert-primary">Your information is always kept encrypted and can never be accessed
+                        by third parties.
+                        <a href="#">View our Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="col-lg-8 border-lg-right pr-lg-5">
+                    <div class="row mb-lg-5">
+                        <div class="col">
+                            <h3>Checkout Details</h3>
+                        </div>
+                    </div>
+                    <form #cForm="ngForm" (ngSubmit)="onFormSubmit(cForm)" ngNativeValidate>
+                        <!-- <form #cForm="ngForm" (ngSubmit)="onFormSubmit(cForm)"> -->
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <!-- <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" required maxlength="50" ngModel
+                                        name="email">
+                                </div> -->
+                                <mat-form-field appearance="outline" class="w-100 mt-2">
+                                    <mat-label>Email Address</mat-label>
+                                    <input matInput type="email" class="form-control" required maxlength="50" ngModel
+                                        name="email">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <small>This will be primary channel of communication,
+                                        We’ll email you the invoice and starter kit here
+                                        and send news and offers. </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" class="form-control" required minlength="10" maxlength="10"
+                                        ngModel name="phone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <small>We will send order and shipping updates to
+                                        your mobile phone via SMS or Whatsapp , so
+                                        please make sure it’s correct as number you
+                                        enter can’t be changed after you place your
+                                        order</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="firstName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="lastName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="company">Company</label>
+                                    <input type="text" class="form-control" maxlength="50" ngModel name="company">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="addressLineOne">Address Line 1</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="addressLineOne">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="addressLineTwo">Address Line 2</label>
+                                    <input type="text" class="form-control" maxlength="100" ngModel
+                                        name="addressLineTwo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="city">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="state">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode</label>
+                                    <input type="text" class="form-control" required maxlength="20" ngModel
+                                        name="zipcode">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="country">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox text-small">
+                                        <input type="checkbox" class="custom-control-input" ngModel
+                                            id="shipToDifferentAddress" name="shipToDifferentAddress">
+                                        <label class="custom-control-label" for="shipToDifferentAddress">Ship to
+                                            different address
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row" *ngIf="cForm.value.shipToDifferentAddress">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingEmail">Shipping Email</label>
+                                    <input type="email" class="form-control" maxlength="50" ngModel
+                                        name="shippingEmail">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingPhone">Shipping Phone</label>
+                                    <input type="tel" class="form-control" required minlength="10" maxlength="10"
+                                        ngModel name="shippingPhone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingFirstName">Shipping First Name</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="shippingFirstName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingLastName">Shipping Last Name</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="shippingLastName">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingCompany">Shipping Company</label>
+                                    <input type="text" class="form-control" maxlength="50" ngModel
+                                        name="shippingCompany">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippinAddressLineOne">Shipping Address Line 1</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="shippinAddressLineOne">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingAddressLineTwo">Shipping Address Line 2</label>
+                                    <input type="text" class="form-control" maxlength="100" ngModel
+                                        name="shippingAddressLineTwo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingCity">Shipping City</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="shippingCity">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingState">Shipping State</label>
+                                    <input type="text" class="form-control" required maxlength="100" ngModel
+                                        name="shippingState">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingZipcode">Shipping Zipcode</label>
+                                    <input type="text" class="form-control" required maxlength="20" ngModel
+                                        name="shippingZipcode">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="shippingCountry">Shipping Country</label>
+                                    <input type="text" class="form-control" required maxlength="50" ngModel
+                                        name="shippingCountry">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="comment">Any Comment</label>
+                                    <input type="textarea" class="form-control" maxlength="200" ngModel name="comment">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

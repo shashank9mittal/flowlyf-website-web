@@ -1,0 +1,125 @@
+<div class="screen-overlay">
+    <div id="mySidenav" class="sidenav" [ngClass]="{'checkout-sidenav' : !fromCheckout}">
+        <div class="header" *ngIf="!fromCheckout">
+            <h6 class="align-left">My Cart: {{cartItems?.length || 0}} Item</h6>
+            <button class="closebtn" style="outline: none;" type="button" (click)="closeCartNav()">
+                <img class="icon icon-sm" data-inject-svg src="assets/img/icons/interface/icon-x.svg">
+            </button>
+            <!-- <a href="javascript:void(0)" class="closebtn align-right" (click)="closeCartNav()">&times;</a> -->
+        </div>
+        <div class="content">
+            <div class="product-empty" *ngIf="!cartItems || cartItems.length == 0">
+                <h5>Your cart is empty.</h5>
+                <button class="btn btn-primary d-sm-block m-l-2" (click)="goToShop()">
+                    Go To Shop
+                </button>
+            </div>
+            <div *ngIf="!fromCheckout">
+                <div class="product d-flex" *ngFor="let item of cartItems; let i = index;">
+                    <div class="product-image">
+                        <img src="assets/img/square-2.jpg" alt="Image" />
+                    </div>
+                    <div class="product-info w-100">
+                        <div class="product-action" (click)="removeProduct(i)">
+                            <img class="icon bg-primary" src="assets/img/icons/interface/icon-x.svg" alt="Icon"
+                                data-inject-svg />
+                        </div>
+                        <div class="product-row">
+                            <h6 class="mb-10px">{{item.product?.name}}</h6>
+                            <h6 class="mb-10px">Core: {{item.frame?.name}}, Surface: {{item.top?.name}}</h6>
+                        </div>
+                        <div class="product-row d-flex justify-content-between align-items-center">
+                            <div class="product-counter">
+                                <div class="input-group">
+                                    <span class="input-group-btn" (click)="addRemoveProductCount('remove', item)">
+                                        <img class="icon bg-primary" src="assets/img/icons/theme/code/minus.svg"
+                                            alt="Icon" data-inject-svg />
+                                    </span>
+                                    <input type="number" name="quant[1]" class="form-control input-number"
+                                        [(ngModel)]="item.quantity" min="1" max="10">
+                                    <span class="input-group-btn" (click)="addRemoveProductCount('add', item)">
+                                        <img class="icon bg-primary" src="assets/img/icons/theme/code/plus.svg"
+                                            alt="Icon" data-inject-svg />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-amount">
+                                <div>
+                                    ₹{{(item.quantity || 1) * (item.paymentOption.price/item.paymentOption.quantity)}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="product-row d-flex justify-content-between align-items-center mt-3"
+                            *ngIf="item.paymentOption.sName == 'subscribe'">
+                            <h6 class="m-0 fs-8">Refundable security deposit </h6>
+                            <h6 class="m-0">Security (2 months)</h6>
+                            <div class="product-amount">
+                                ₹{{(item.quantity || 1) * (item.paymentOption.price/item.paymentOption.quantity) * 2}}
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="fromCheckout">
+                <div class="product" *ngFor="let item of cartItems; let i = index;">
+                    <div class="product-info w-100 d-flex align-items-center justify-content-between">
+                        <div class="product-row">
+                            <h6 class="mb-10px f-14">{{item.product?.name}}</h6>
+                            <h6 class="mb-10px f-14">Core: {{item.frame?.name}}</h6>
+                            <h6 class="mb-10px f-14">Surface: {{item.top?.name}}</h6>
+                        </div>
+                        <div class="product-row">
+                            <h6 class="mb-10px f-14 mt-8">Quantity: {{item.quantity}}</h6>
+                        </div>
+                        <div class="product-row">
+                            <div class="product-amount">
+                                <div>
+                                    ₹{{(item.quantity || 1) * (item.paymentOption.price/item.paymentOption.quantity)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-price" *ngIf="cartItems && cartItems.length">
+                <div class="product-price-shipping">
+                    <p>Set up fee</p>
+                    <p>---</p>
+                </div>
+                <div class="product-price-shipping">
+                    <p>Packing and installation fee</p>
+                    <p>---</p>
+                </div>
+                <div class="product-price-shipping">
+                    <p>Shipping</p>
+                    <p>---</p>
+                </div>
+                <div class="product-price-shipping">
+                    <p>Discount</p>
+                    <p>---</p>
+                </div>
+                <div class="product-price-shipping">
+                    <p>Tax – GST @ 18%</p>
+                    <p>₹{{calculatTotalGST()}}</p>
+                </div>
+                <div class="product-price-subtotal">
+                    <p>Subtotal</p>
+                    <p>₹{{getSubTotal()}}</p>
+                </div>
+                <div class="product-price-shipping">
+                    <p>Refundable security deposit</p>
+                    <p>₹{{securityDeposit()}}</p>
+                </div>
+                <div class="product-price-total">
+                    <h6>Total </h6>
+                    <h6>₹{{getTotal()}}</h6>
+                </div>
+                <div class="m-3 text-center" *ngIf="!fromCheckout">
+                    <button class="btn btn-primary d-sm-block m-auto" (click)="goToCheckout()">
+                        Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

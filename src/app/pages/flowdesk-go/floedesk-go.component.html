@@ -1,0 +1,224 @@
+<section class="p-0">
+  <!-- <div class="background-video">
+        <video class="w-background-video" playsinline loop autoplay [muted]="'muted'">
+            <source src="https://s3.ap-south-1.amazonaws.com/flowlyf.com/assets/video/Flowlyf+final+cut.mp4" type="video/mp4">
+    </div> -->
+  <div class="background-video" *ngIf="innerWidth >= 800">
+    <video
+      class="w-background-video"
+      playsinline
+      loop
+      autoplay
+      [muted]="'muted'"
+    >
+      <source
+        src="https://s3.ap-south-1.amazonaws.com/flowlyf.com/assets/video/Flowlyf-Flowdesk-height adjustable desk-standing desk-smartdesk-ergonomics- pinewood-solidwood-modern design-workfromhome-product video final-Big mp4.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+  <div class="background-video" *ngIf="innerWidth > 450 && innerWidth < 800">
+    <video
+      class="w-background-video"
+      playsinline
+      loop
+      autoplay
+      [muted]="'muted'"
+    >
+      <source
+        src="https://s3.ap-south-1.amazonaws.com/flowlyf.com/assets/video/standing+desk-smartdesk-ergonomics-+pinewood-solidwood-modern+design-workfromhome-+product+video+final-medium+mp4-2.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+  <div class="background-video" *ngIf="innerWidth < 450">
+    <video
+      class="w-background-video"
+      playsinline
+      loop
+      autoplay
+      [muted]="'muted'"
+    >
+      <source
+        src="https://s3.ap-south-1.amazonaws.com/flowlyf.com/assets/video/standing+desk-smartdesk-ergonomics-+pinewood-solidwood-modern+design-workfromhome-+product+video+final-small+mp4-2.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+</section>
+
+<!-- flow go details on Medium and larger screen -->
+<section class="d-none d-md-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="assets/flow-go-home/flow-go-left.png"
+          alt="Screenshot"
+          class="img-fluid"
+        />
+      </div>
+      <div class="text-center col-md-4 " style="align-self: center">
+        <div class="flow-go-text">
+          <h2>
+            Get. Set. GO
+          </h2>
+          <p class="lead">
+            Always stay on the go with FlowDesk Go. With a sleek and clean
+            design, wire management loops, inbuilt mag snap, shelf for
+            accessories and seamless automated height adjustability with four
+            saving modes, it’ll never feel easier to kickstart your day.
+          </p>
+
+          <a>Subscribe @ INR 1990 / Mo. OR Buy @ INR 28,900/-</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img
+          src="assets/flow-go-home/flow-go-right.png"
+          alt="Screenshot"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- flow go details on Smaller screen -->
+<section class="d-block d-md-none">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <img
+          src="assets/flow-go-home/flow-go-left.png"
+          alt="Screenshot"
+          class="img-fluid"
+        />
+      </div>
+
+      <div class="col-6">
+        <img
+          src="assets/flow-go-home/flow-go-right.png"
+          alt="Screenshot"
+          class="img-fluid"
+        />
+      </div>
+
+      <div class="text-center col-md-4 " style="align-self: center">
+        <div class="flow-go-text">
+          <h2>
+            Get. Set. GO
+          </h2>
+          <p class="lead">
+            Always stay on the go with FlowDesk Go. With a sleek and clean
+            design, wire management loops, inbuilt mag snap, shelf for
+            accessories and seamless automated height adjustability with four
+            saving modes, it’ll never feel easier to kickstart your day.
+          </p>
+
+          <a>Subscribe @ INR 1990 / Mo. OR Buy @ INR 28,900/-</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white o-hidden" style="padding-top: 0;">
+  <div class="container" style="max-width: 100%">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="text-center m-3">
+          <h3 style="font-size: 22px;">FlowDeskGo</h3>
+          <h3 style="font-size: 22px;">Classic</h3>
+          <img
+            src="assets/flowdesk-go/3.png"
+            alt="Screenshot"
+            class="img-fluid"
+          />
+
+          <div class="d-flex justify-content-center mt-3 mb-3">
+            <div>
+              <h3 style="font-size: 22px;">Buy</h3>
+              <a
+                class="btn btn-primary mr-lg-2 my-sm-0"
+                style="color: #fff;background-color: #243a33;border-color: #243a33;"
+                >₹28,900/-</a
+              >
+            </div>
+            <div>
+              <h3 style="font-size: 22px;">Subscribe</h3>
+              <a
+                class="btn btn-primary mr-lg-2 my-sm-0"
+                style="color: #fff;background-color: #243a33;border-color: #243a33;"
+                >₹1,990/- Mo</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <div class="text-center m-3">
+          <h3 style="font-size: 22px;">FlowDesk Go</h3>
+          <h3 style="font-size: 22px;">Max</h3>
+          <img
+            src="assets/flowdesk-go/4.png"
+            alt="Screenshot"
+            class="img-fluid"
+          />
+
+          <div class="d-flex justify-content-center mt-3 mb-3">
+            <div>
+              <h3 style="font-size: 22px">Buy</h3>
+              <a
+                class="btn btn-primary mr-lg-2 my-sm-0"
+                style="color: #fff;background-color: #154062;border-color: #154062;"
+                >₹34,400/-</a
+              >
+            </div>
+            <div>
+              <h3 style="font-size: 22px">Subscribe</h3>
+              <a
+                class="btn btn-primary mr-lg-2 my-sm-0"
+                style="color: #fff;background-color: #154062;border-color: #154062;"
+                >₹2,390/- Mo</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="text-decoration: underline">
+      <a class="btn btn-outline-primary" (click)="openSpecDialog()"
+        >Get Spec Sheet</a
+      >
+      <!-- <a href="" (click)="openSpecDialog()">Get Spec Sheet</a> -->
+      <!-- <a href="./pricing-plan">Learn More</a> -->
+    </div>
+  </div>
+  <div class="text-center">
+    <a>Price all inclusive of 18% GST, Delivery and Installation Charges.</a>
+  </div>
+</section>
+
+<section style="padding-bottom: 1rem;padding-top: 0">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-md-9 col-lg-8 col-xl-7">
+        <H3>Mag Snap</H3>
+        <h5>It Attracts! Quite literally.</h5>
+        <div class="lead">
+          Meet the Mag Snap, an inbuilt surface which allows you to build up
+          your accessories with a snap, gives the desk a clean look while adding
+          immense utility as an accessory build up. Just snap the desired add
+          ons, and you’re good to GO.
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <img
+        style="max-width: 100%; max-height: 400px;"
+        src="assets/flowdesk-go/Flowlyf-Magsnap.png"
+      />
+    </div>
+  </div>
+</section>
