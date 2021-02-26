@@ -1,0 +1,165 @@
+<div class="f-right">
+    <button mat-mini-fab color="primary" matTooltip="Go to orders" [routerLink]="['/account/orders']">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div class="ordewr-details">
+    <div class="mb-4">
+        <h3>Order Details
+            <span class="badge badge-success" *ngIf="order?.paymentStatus == 2">PAID</span>
+        </h3>
+    </div>
+    <div class="row justify-content-between mb-4 mb-md-5">
+        <div class="col-sm">
+            <h6>Order to:</h6>
+            <div>
+                <div>{{order?.firstName}} {{order?.lastName}}</div>
+                <div>{{order?.email}}</div>
+                <div>{{order?.phone}}</div>
+                <div>{{order?.company}}</div>
+                <address>
+                    {{order?.addressLineOne}}, {{order?.addressLineTwo}}
+                    <br />{{order?.city}} {{order?.state}} {{order?.zipcode}}
+                </address>
+            </div>
+        </div>
+        <div class="col-sm col-lg-4">
+            <dl class="row text-sm-right">
+                <dt class="col-6"><strong>Invoice No.</strong>
+                </dt>
+                <dd class="col-6">{{order?.invoiceNo}}</dd>
+                <dt class="col-6"><strong>Date:</strong>
+                </dt>
+                <dd class="col-6">{{order?.createdAt | date: 'dd/MM/yyyy'}}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="item-tabel">
+        <table class="table mb-0 text-right">
+            <thead class="bg-light border-top">
+                <tr>
+                    <th scope="col" class="border-0 text-left"> Item </th>
+                    <th scope="col" class="border-0"> Payment </th>
+                    <!-- <th scope="col" class="border-0"> Status </th> -->
+                    <th scope="col" class="border-0"> Quantity </th>
+                    <th scope="col" class="border-0"> Rate </th>
+                    <th scope="col" class="border-0"> Total </th>
+                </tr>
+            </thead>
+            <tbody *ngIf="order?.orderedProducts">
+                <tr *ngFor="let item of order?.orderedProducts">
+                    <th scope="row" class="text-left">
+                        {{item.name}} <br>
+                        Core: {{item.frame.name}}, Surface: {{item.top.name}}
+                    </th>
+                    <th> {{item.paymentType == 'buy' ? 'Buy' : 'Monthly subscription'}} </th>
+                    <!-- <td *ngIf="order?.orderStatus == 1 "> Pending</td>
+                    <td *ngIf="order?.orderStatus == 2 "> Confirmed </td>
+                    <td *ngIf="order?.orderStatus == 3 "> Shipped </td>
+                    <td *ngIf="order?.orderStatus == 4 "> Delivered</td>
+                    <td *ngIf="order?.orderStatus == 5 "> Rejected </td> -->
+                    <td> {{item.quantity}} </td>
+                    <td> ₹{{item.productPrice}} </td>
+                    <td> ₹{{item.total}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div *ngIf="order">
+            <div class="row py-2 border-bottom">
+                <div class="col-md-10 text-right">Set up fee:</div>
+                <div class="col-md-2 text-right mb-0">---</div>
+            </div>
+            <div class="row py-2 border-bottom">
+                <div class="col-md-10 text-right">Packing and installation fee:</div>
+                <div class="col-md-2 text-right mb-0">---</div>
+            </div>
+            <div class="row py-2 border-bottom">
+                <div class="col-md-10 text-right">Shipping:</div>
+                <div class="col-md-2 text-right mb-0">---</div>
+            </div>
+            <div class="row py-2 border-bottom">
+                <div class="col-md-10 text-right">Tax – (GST @ 18%):</div>
+                <div class="col-md-2 text-right mb-0">₹{{order?.totalGST}}</div>
+            </div>
+            <div class="row py-2 border-bottom">
+                <div class="col-md-10 text-right">Subtotal:</div>
+                <div class="col-md-2 text-right mb-0">₹{{order?.subTotal}}</div>
+            </div>
+            <div class="row py-2 border-bottom" *ngIf="order?.paymentType == 'subscription'">
+                <div class="col-md-10 text-right">Refundable security deposit:</div>
+                <div class="col-md-2 text-right mb-0">₹{{order?.securityDeposit}}</div>
+            </div>
+            <div class="row py-2 border-bottom mb-4">
+                <div class="col-md-10 text-right">Total:</div>
+                <div class="col-md-2 text-right h4 mb-0">₹{{order?.total}}</div>
+            </div>
+        </div>
+        <!-- <div class="d-flex justify-content-end text-right mb-4 py-4 border-bottom">
+            <div>
+                <div>Payment Total:</div>
+                <div class="h4 mb-0 mt-2">₹{{order?.totalAmount}}</div>
+            </div>
+        </div> -->
+        <div class="text-small">
+            <div>Ship to:</div>
+            <div *ngIf="!order?.shipToDifferentAddress">
+                <div>{{order?.firstName}} {{order?.lastName}}</div>
+                <div>{{order?.email}}</div>
+                <div>{{order?.phone}}</div>
+                <div>{{order?.company}}</div>
+                <address>
+                    {{order?.addressLineOne}}, {{order?.addressLineTwo}}
+                    <br />{{order?.city}} {{order?.state}} {{order?.zipcode}}
+                </address>
+            </div>
+            <div *ngIf="order?.shipToDifferentAddress">
+                <div>{{order?.shippingFirstName}} {{order?.shippingLastName}}</div>
+                <div>{{order?.shippingEmail}}</div>
+                <div>{{order?.shippingPhone}}</div>
+                <div>{{order?.shippingCompany}}</div>
+                <address>
+                    {{order?.shippingAddressLineOne}}, {{order?.shippingAddressLineTwo}}
+                    <br />{{order?.shippingCity}} {{order?.shippingState}} {{order?.shippingZipcode}}
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<mat-accordion class="example-headers-align" *ngIf="subs && subs.length">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-panel-title>
+                    <h5 class="m-0">Subscription Payments</h5>
+                </mat-panel-title>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="ordewr-details">
+            <div class="sub-item-tabel">
+                <table class="table mb-0">
+                    <thead class="bg-light border-top">
+                        <tr>
+                            <th scope="col" class="border-0"> Date </th>
+                            <th scope="col" class="border-0"> Order Id </th>
+                            <th scope="col" class="border-0"> Amount </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of subs">
+                            <td> {{item.createdAt | date: 'dd/MM/yyyy'}} </td>
+                            <td> {{item._id.substring(item._id.length-10)}} </td>
+                            <td> ₹{{item.amount}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,22 @@
+<form [formGroup]="otpForm" novalidate>
+    <h1 mat-dialog-title>A One-Time Password has been sent to your email.</h1>
+    <div mat-dialog-content>
+        <mat-form-field class="w-100 mt-2">
+            <input matInput placeholder="Enter otp" formControlName="otp" maxlength="5" minlength="5">
+            <mat-error *ngIf="otpForm.controls['otp'].errors">
+                OTP is required.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <!-- <div mat-dialog-actions>
+        <button mat-button type="button" (click)="closeDialog()">Close</button>
+        <button mat-button type="submit" (click)="signin()">Sign In</button>
+    </div> -->
+    <div class="text-center mt-2">
+        <button class="btn btn-primary btn-block mat-dialog-title" (click)="signin()">
+            Sign In
+        </button>
+        <a class="pointer mt-2"><h1 mat-dialog-title>Resend One-Time Password</h1></a>
+        <p class="pointer">Entered wrong number/email?</p>
+    </div>
+</form>

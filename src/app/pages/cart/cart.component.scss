@@ -1,0 +1,31 @@
+.product-spec {
+    div {
+        width: 100%;
+    }
+    .selection {
+        height: 100%;
+        justify-content: center;
+        cursor: pointer;
+
+        &.active {
+            border-color: #009b72;
+        }
+    }
+    .btn-primary {
+        color: #fff;
+    }
+    .disabled-option {
+        // pointer-events: none;
+        // cursor: default;
+        // visibility: .5;
+        display: none;
+    }
+    .item-color {
+        height: 40px;
+        margin-bottom: 5px;
+    }
+    .selection-color-item {
+        padding: 1.25rem;
+    }
+
+}

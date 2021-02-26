@@ -1,0 +1,15 @@
+::ng-deep .ngx-mat-timepicker {
+    .table th, .table td {
+        vertical-align: middle;
+    }
+}
+
+.close-button {
+    float: right;
+    margin: -5px;
+    outline: none;
+}
+
+::ng-deep .mat-icon-button:focus {
+    outline: none;
+}

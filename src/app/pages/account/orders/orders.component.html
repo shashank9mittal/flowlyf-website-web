@@ -1,0 +1,43 @@
+<div class="mat-table orders-table">
+    <div class="mat-header-row">
+        <div class="mat-header-cell">Id</div>
+        <div class="mat-header-cell">Date</div>
+        <div class="mat-header-cell">Payment Type</div>
+        <div class="mat-header-cell">Status</div>
+        <div class="mat-header-cell">Total Amount</div>
+        <div class="mat-header-cell"></div>
+    </div>
+    <div *ngFor="let order of orders; let i = index" class="mat-row">
+        <!-- <div class="mat-cell"><span class="order" [ngStyle]="{background: order.orderStatus.colorCode}"
+                [ngClass]="{'color': order.orderPrefixId}">{{order.orderPrefixId}}</span></div> -->
+        <div class="mat-cell">{{order._id.substring(order._id.length-10)}}</div>
+        <div class="mat-cell">{{order.createdAt | date: 'dd/MM/yyyy'}}</div>
+        <div class="mat-cell">{{order.paymentType}}</div>
+        <div class="mat-cell" [ngSwitch]="order.orderStatus">
+            <span *ngSwitchCase="1">pending</span>
+            <span *ngSwitchCase="2">confirmed</span>
+            <span *ngSwitchCase="3">shipped</span>
+            <span *ngSwitchCase="4">delivered</span>
+            <span *ngSwitchCase="5">rejected</span>
+        </div>
+        <div class="mat-cell">₹ {{order.totalAmount}}</div>
+        <div class="mat-cell">
+            <div class="p-1 actions">
+                <button mat-mini-fab color="primary" matTooltip="View" [routerLink]="['/account/orders', order._id]">
+                    <mat-icon>remove_red_eye</mat-icon>
+                </button>
+
+                <!-- <button mat-mini-fab color="warn" matTooltip="Download invoice" class="btn-invoice"
+                    (click)="getInvoice(order)">
+                    <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                    <mat-icon>archive</mat-icon>
+                </button> -->
+            </div>
+        </div>
+    </div>
+    <!-- <mat-card class="p-0 text-center">
+        <mat-paginator [length]="accountSandbox.orderHistoryCount$|async" [pageSize]="pageSize" [pageIndex]="index"
+            [pageSizeOptions]="[10,15,20]" (page)="onPageChange($event)">
+        </mat-paginator>
+    </mat-card> -->
+</div>

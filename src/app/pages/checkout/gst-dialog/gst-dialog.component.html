@@ -1,0 +1,42 @@
+<form [formGroup]="gstForm" novalidate>
+    <h1 mat-dialog-title>Please enter GST details.
+        <button mat-icon-button class="close-button icon-outside" [mat-dialog-close]="true">
+            <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+        </button>
+    </h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+            <input matInput placeholder="GST number" formControlName="number" maxlength="15">
+            <mat-error *ngIf="gstForm.controls['number'].errors">
+                GST is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+            <input matInput placeholder="Company / individual name" formControlName="company" maxlength="100">
+            <mat-error *ngIf="gstForm.controls['company'].errors">
+                Company / individual name is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100 mt-2">
+            <input matInput placeholder="Registered Address" formControlName="address" maxlength="250">
+            <mat-error *ngIf="gstForm.controls['address'].errors">
+                Registered address is required.
+            </mat-error>
+        </mat-form-field>
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="custom-control custom-checkbox text-small">
+                    <input type="checkbox" class="custom-control-input" (change)="onChangeSame()" formControlName="same"
+                        id="same" name="same">
+                    <label class="custom-control-label" for="same">Address same as checkout details?
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex text-center mt-2 justify-content-center">
+        <button class="btn btn-primary mat-dialog-title" (click)="submitGST()">
+            Submit
+        </button>
+    </div>
+</form>
