@@ -30,33 +30,37 @@
     .flow-go-text-header {
       display: grid;
       grid-template-columns: auto auto;
-      h2{
+      .fld-text{
         justify-self: flex-end;
+        h2{
+          margin-bottom: 0;
+        }
       }
       .go-text {
         margin: 10px;
         font-size: 60px;
         justify-self: flex-start;
-      }
+        @media screen and (max-width: 767px) {
+          margin: 5px;
+        }
+
+        }
     }
     .flow-go-text-content{
       display: grid;
       grid-template-rows: auto;
       justify-items: center;
       a{
-        color: #009b72;
-        cursor: pointer;
+        color: white;
       }
+
     }
     .flow-stand-text-content{
-      color: white;
       display: grid;
       grid-template-rows: auto;
       justify-items: center;
-      h2{
-        color: white;
-      }
       a{
+        color: white;
         cursor: pointer;
       }
     }
