@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'contact', loadChildren: './pages/contact/contact.module#ContactModule' },
       { path: 'faq', loadChildren: './pages/faq/faq.module#FaqModule' },
       { path: 'flowdesk', loadChildren: './pages/flowdesk/flowdesk.module#FlowdeskModule' },
-      { path: 'flowdeskgo', loadChildren: './pages/flowdesk-go/flowdesk-go.module#FlowdeskGoModule' },
+      { path: 'flowlyf-website-web/flowdeskgo', loadChildren: './pages/flowdesk-go/flowdesk-go.module#FlowdeskGoModule' },
       { path: 'pricing-plan', loadChildren: './pages/pricing-plan/pricing-plan.module#PricingPlanModule' },
       { path: 'privacy-policy', loadChildren: './pages/privacy-policy/privacy-policy.module#PrivacyPolicyModule' },
       { path: 'terms-of-use', loadChildren: './pages/terms-of-use/terms-of-use.module#TermsOfUseModule' },
